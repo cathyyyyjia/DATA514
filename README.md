@@ -1,1 +1,1 @@
-# data514
+# DATA 514 Data Management for Data Science
