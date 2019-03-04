@@ -1,0 +1,8 @@
+search "Seattle WA" "Boston MA' and actual_time > 300 and dest_city='Boston MA" 1 14 10
+search "Seattle WA" "Boston MA'; create table Foo(a int); SELECT year,month_id,day_of_month,carrier_id,flight_num,origin_city,actual_time from Flights where origin_city = 'Seattle WA" 1 14 10
+quit
+*
+No flights match your selection
+No flights match your selection
+Goodbye
+*

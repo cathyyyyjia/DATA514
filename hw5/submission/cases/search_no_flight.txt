@@ -1,0 +1,6 @@
+search "Boston MA" "Sacramento CA" 1 15 1
+quit
+*
+No flights match your selection
+Goodbye
+*

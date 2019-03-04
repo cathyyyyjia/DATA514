@@ -1,0 +1,15 @@
+create user1 user1 100
+login user1 user1
+search "Seattle WA" "San Diego CA" 1 1 1
+book 0
+pay 1
+quit
+*
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 150.0 minutes
+ID: 71587 Date: 2005-7-1 Carrier: AS Number: 566 Origin: Seattle WA Dest: San Diego CA Duration: 150.0 Capacity: 16 Price: 485.34
+Booked flight(s), reservation ID: 1
+User has only 100.0 in account but itinerary costs 485.34
+Goodbye
+*

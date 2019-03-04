@@ -1,0 +1,6 @@
+reservations
+quit
+*
+Cannot view reservations, not logged in
+Goodbye
+*
