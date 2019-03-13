@@ -1,0 +1,16 @@
+-- [Result Size: 262]
+
+USE hw6;
+SELECT u.text AS ethnic_group,
+       COUNT(*) AS num_countries,
+       SUM(FLOAT(u.percentage) * FLOAT(u.population) / 100.0) AS total_population
+FROM
+(SELECT y.population AS population,
+        z.`#text` AS text,
+        z.`-percentage` AS percentage
+FROM world x,
+     x.mondial.country y,
+    (CASE WHEN y.ethnicgroups is missing THEN []
+     WHEN is_array(y.ethnicgroups) THEN y.ethnicgroups
+     ELSE [y.ethnicgroups] END) z) u
+GROUP BY u.text;

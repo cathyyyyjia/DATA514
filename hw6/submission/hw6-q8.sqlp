@@ -1,0 +1,18 @@
+-- [Result Size: 45]
+
+USE hw6;
+SELECT w.name AS country
+FROM world x,
+     x.mondial.country w
+WHERE w.name NOT IN
+(SELECT VALUE y.name
+FROM world x,
+     x.mondial.country y,
+     (SELECT VALUE s.name
+      FROM x.mondial.sea s,
+      SPLIT(s.`-country`, ' ') code
+      WHERE y.`-car_code` = code) z
+GROUP BY y.`-car_code`,
+         y.name
+GROUP AS seas(z AS sea))
+ORDER BY FLOAT(w.`-area`) DESC;

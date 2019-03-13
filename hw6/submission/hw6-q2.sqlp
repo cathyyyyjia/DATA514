@@ -1,0 +1,12 @@
+-- [Result Size: 238 rows]
+
+USE hw6;
+SELECT y.name AS country,
+       y.population AS population,
+       u AS num_religions
+FROM world x,
+     x.mondial.country y
+Let u = (CASE WHEN y.religions is missing THEN 0 
+         WHEN is_array(y.religions) THEN array_count(y.religions)
+         ELSE 1 END)
+ORDER BY y.name;

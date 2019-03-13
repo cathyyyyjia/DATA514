@@ -1,0 +1,30 @@
+-- [Result Size: 7]
+-- [Runtime: 0.13 sec]
+
+USE hw6index;
+SELECT DISTINCT a.country_name AS country1,
+       b.country_name AS country2
+FROM
+(SELECT y.name AS country_name,
+        m.name AS mountain_name,
+        s.name AS sea_name
+FROM country y,
+     mountain m,
+     SPLIT(m.`-country`, ' ') code1,
+     sea s,
+     SPLIT(s.`-country`, ' ') code2
+WHERE y.`-car_code` = code1 AND
+      y.`-car_code` = code2) a,
+(SELECT y.name AS country_name,
+       m.name AS mountain_name,
+       s.name AS sea_name
+FROM country y,
+     mountain m,
+     SPLIT(m.`-country`, ' ') code1,
+     sea s,
+     SPLIT(s.`-country`, ' ') code2
+WHERE y.`-car_code` = code1 AND
+      y.`-car_code` = code2) b
+WHERE a.country_name < b.country_name AND
+      a.mountain_name = b.mountain_name AND
+      a.sea_name = b.sea_name;

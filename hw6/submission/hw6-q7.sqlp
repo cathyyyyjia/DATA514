@@ -1,0 +1,16 @@
+-- [Result Size: 74]
+
+USE hw6;
+SELECT y.`-car_code` AS country_code,
+       y.name AS country, seas
+FROM world x,
+     x.mondial.country y,
+     (SELECT VALUE s.name
+      FROM x.mondial.sea s,
+           SPLIT(s.`-country`, ' ') code
+      WHERE y.`-car_code` = code ) z
+GROUP BY y.`-car_code`,
+         y.name
+GROUP AS seas(z AS sea)
+HAVING array_count(seas) >= 2
+ORDER BY array_count(seas) DESC;

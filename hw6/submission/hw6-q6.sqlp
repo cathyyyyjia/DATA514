@@ -1,0 +1,13 @@
+-- [Result Size: 238]
+
+USE hw6;
+SELECT y.`-car_code` AS country_code,
+       y.name AS country,
+       (SELECT m.name AS name,
+               m.height AS height
+        FROM x.mondial.mountain m,
+             SPLIT(m.`-country`, ' ') code
+        WHERE y.`-car_code` = code) AS mountains
+FROM world x,
+     x.mondial.country y
+ORDER BY array_count(mountains) DESC;
